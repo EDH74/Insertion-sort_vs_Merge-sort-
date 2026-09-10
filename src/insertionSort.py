@@ -20,7 +20,7 @@ for i in qntArray:
     for e in range(i):
         arr.append(random.randrange(i))
     
-    tempo[i] = timeit.timeit(lambda: insertion_sort(arr), number=10000)
+    tempo[i] = timeit.timeit(lambda: insertion_sort(arr), number=100)
     arr.clear()
 
 print(tempo)
