@@ -17,10 +17,10 @@ def insertion_sort(arr):
 def execucao(listaExec):
     arr = []
     tempo = {}
+    random.seed(67)
 
     for i in qntArray:
         for e in range(i):
-            random.seed(67)
             arr.append(random.randrange(i))
         
         tempo[i] = timeit.timeit(lambda: insertion_sort(arr), number=3)
