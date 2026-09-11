@@ -7,7 +7,7 @@ random.seed(67)
 
 
 def tracin(n):
-    return "="*n
+    print("="*n)
 
 def mergeSort(data):
   
@@ -105,11 +105,10 @@ def relatorioPorCenario(cenarioPassado=0, qntArray=[1000, 2000, 4000, 8000, 1600
 
     soma = {}
 
+    tempos = gerarTempoMerge(cenarioPassado, qntArray)
     for i in range(4):
-        tempos = gerarTempoMerge(cenarioPassado, qntArray)
         
         if i == 0:
-            print("Primeira execucao descartada do calculo da mediana")
             for e in tempos.keys():
                 soma[e] = []
         
@@ -120,36 +119,29 @@ def relatorioPorCenario(cenarioPassado=0, qntArray=[1000, 2000, 4000, 8000, 1600
                 soma[timers].append(tempos[timers])
         print()
         
-        if i == 1:
-            print("Primeira execucao descartada do calculo da mediana")
-            for e in tempos.keys():
-                soma[e] = []
-            
-            print(f"Merge Sort ordenada no pior caso: {i+1}")
-            for timers in tempos:
-                print(f"{timers} | {tempos[timers]:.15f}")
-                if i > 0:
-                    soma[timers].append(tempos[timers])
-            print()
+       
         
             
     #Relatorio da mediana
+    print()
     medianaList = {}
 
     for i in soma:
         medianaList[i] = statistics.median(soma[i])
         
 
-    tracin(50)
+    
     tipo = "mediana lista ordenada no pior caso" if cenarioPassado == 1 else "Mediana lista com entrada aleatoria"
-    print(tipo)
     tracin(50)
     print()
+    print(tipo)
+    print()
+    tracin(50)
     for i in medianaList:
         print(f"{i} | {medianaList[i]:.15f}", sep="    ")
 
 
-relatorioPorCenario(1, [1000, 2000, 4000, 8000, 16000])
+
 '''
 alist = [54,26,500,93,17,77,31,44,55,20, 200]
 calls = mergeSort(alist)

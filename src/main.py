@@ -3,11 +3,15 @@ import insertionSort
 import mergeSort
 
 largeArray = [10000, 20000, 40000, 80000, 160000]  #Esse array demora para dedeu
-defaulArray = [1000, 2000, 4000, 8000, 16000]
+defaulArray = [1000, 2000, 4000, 8000, 16000]  #Array Usado para gerar os relatórios, pois é mais rápido e não trava o programa
 
 
 #Funções assíncronas para isolar cada bloco de relatório
 async def gerar_relatorio_insertion():
+    print()
+    print()
+    print()
+    print()
     print("\n" + "="*50)
     print("Relatório Insertion Sort")
     
@@ -24,6 +28,10 @@ async def gerar_relatorio_insertion():
 
 
 async def gerar_relatorio_merge():
+    print()
+    print()
+    print()
+    print()
     print("\n" + "="*50)
     print("Relatório Merge Sort")
     
@@ -40,9 +48,9 @@ async def gerar_relatorio_merge():
 
 
 async def main():
-    
-    await gerar_relatorio_insertion()
+    print('\033c', end='')
     await gerar_relatorio_merge()
+    await gerar_relatorio_insertion()
 
  
 
