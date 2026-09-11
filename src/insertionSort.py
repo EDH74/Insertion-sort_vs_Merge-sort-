@@ -18,7 +18,7 @@ def insertion_sort(arr):
 
 random.seed(67)
 
-def execucao(listaExec, cenario=0):
+def gerarTempoInsertion(listaExec, cenario=0):
     arr = []
     tempo = {}
 
@@ -37,6 +37,7 @@ def execucao(listaExec, cenario=0):
                 arr.append(random.randrange(i))
             
             arr.sort(reverse=True)
+
             tempo[i] = timeit.timeit(lambda: insertion_sort(arr), number=1)
             arr.clear()
     
@@ -49,29 +50,41 @@ def execucao(listaExec, cenario=0):
 
 
 def relatorioPorCenario(cenarioPassado=0, qntArray=[1000, 2000, 4000, 8000, 16000]):
-    #script que gera os dados
-
-    soma = {}
-
     """
     Caso seja cenario 0 ele gera um Insertion sort com os dados aleatorios
     caso seja Cenario 1 ele gera um Insertion sort com os dados ordenador
     foi seta uma seed como 67 para nao haver interferencia na resposta
     """
+    
+
+    soma = {}
+
     for i in range(4):
-        tempos = execucao(qntArray, cenarioPassado)
+        tempos = gerarTempoInsertion(qntArray, cenarioPassado)
         
         if i == 0:
             print("Primeira execucao descartada do calculo da mediana")
             for e in tempos.keys():
                 soma[e] = []
         
-        print(f"Insertion Sort execucao aleatorio: {i+1}")
-        for timers in tempos:
-            print(f"{timers} | {tempos[timers]}")
-            if i > 0:
-                soma[timers].append(tempos[timers])
-        print()
+            print(f"Insertion Sort execucao aleatorio: {i+1}")
+            for timers in tempos:
+                print(f"{timers} | {tempos[timers]}")
+                if i > 0:
+                    soma[timers].append(tempos[timers])
+            print()
+        
+        if i == 1:
+            print("Primeira execucao descartada do calculo da mediana")
+            for e in tempos.keys():
+                soma[e] = []
+        
+            print(f"Insertion Sort no pior caso: {i+1}")
+            for timers in tempos:
+                print(f"{timers} | {tempos[timers]}")
+                if i > 0:
+                    soma[timers].append(tempos[timers])
+            print()
         
             
     #Relatorio da mediana

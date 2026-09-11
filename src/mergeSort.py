@@ -1,5 +1,13 @@
 import random
 import timeit
+import statistics
+
+random.seed(67)
+
+
+
+def tracin(n):
+    return "="*n
 
 def mergeSort(data):
   
@@ -57,20 +65,91 @@ def mergeSort(data):
 
 
 
-qntArray = [1000, 2000, 4000, 8000, 16000]
+def gerarTempoMerge(cenario=0, listaExec=None):
+    arr = []
+    tempo = {}
+ 
+    if cenario == 0:
+        for i in listaExec:
+            for _ in range(i):    
+                arr.append(random.randrange(i))
+                
+            tempo[i] = timeit.timeit(lambda: mergeSort(arr), number=1)
+            arr.clear()
+            
+            
+    elif cenario == 1:
+        for i in listaExec:
+            for _ in range(i):
+                arr.append(random.randrange(i))
+            
+            arr.sort(reverse=True)
 
-arr = []
-tempo = {}
-
-for i in qntArray:
-    for e in range(i):
-        arr.append(random.randrange(i))
+            tempo[i] = timeit.timeit(lambda: mergeSort(arr), number=1)
+            arr.clear()
     
-    tempo[i] = timeit.timeit(lambda: mergeSort(arr.copy()), number=100)
-    arr.clear()
+    else:
+        raise ValueError("Valor passado no cenario/Lista de Array invalido!")
+            
+            
+    return tempo
 
-print(tempo)
 
+def relatorioPorCenario(cenarioPassado=0, qntArray=[1000, 2000, 4000, 8000, 16000]):
+    """
+    Caso seja cenario 0 ele gera um Insertion sort com os dados aleatorios
+    caso seja Cenario 1 ele gera um Insertion sort com os dados ordenador
+    foi seta uma seed como 67 para nao haver interferencia na resposta
+    """
+    
+
+    soma = {}
+
+    for i in range(4):
+        tempos = gerarTempoMerge(cenarioPassado, qntArray)
+        
+        if i == 0:
+            print("Primeira execucao descartada do calculo da mediana")
+            for e in tempos.keys():
+                soma[e] = []
+        
+        print(f"Merge Sort execucao aleatorio: {i+1}")
+        for timers in tempos:
+            print(f"{timers} | {tempos[timers]:.15f}")
+            if i > 0:
+                soma[timers].append(tempos[timers])
+        print()
+        
+        if i == 1:
+            print("Primeira execucao descartada do calculo da mediana")
+            for e in tempos.keys():
+                soma[e] = []
+            
+            print(f"Merge Sort ordenada no pior caso: {i+1}")
+            for timers in tempos:
+                print(f"{timers} | {tempos[timers]:.15f}")
+                if i > 0:
+                    soma[timers].append(tempos[timers])
+            print()
+        
+            
+    #Relatorio da mediana
+    medianaList = {}
+
+    for i in soma:
+        medianaList[i] = statistics.median(soma[i])
+        
+
+    tracin(50)
+    tipo = "mediana lista ordenada no pior caso" if cenarioPassado == 1 else "Mediana lista com entrada aleatoria"
+    print(tipo)
+    tracin(50)
+    print()
+    for i in medianaList:
+        print(f"{i} | {medianaList[i]:.15f}", sep="    ")
+
+
+relatorioPorCenario(1, [1000, 2000, 4000, 8000, 16000])
 '''
 alist = [54,26,500,93,17,77,31,44,55,20, 200]
 calls = mergeSort(alist)
