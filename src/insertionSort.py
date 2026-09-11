@@ -22,28 +22,34 @@ def execucao(listaExec, cenario=0):
     arr = []
     tempo = {}
 
-    for i in qntArray:
-        
-        if cenario == 0:
-            for i in listaExec:
-                for _ in range(i):    
-                    arr.append(random.randrange(i))
-                    
-                tempo[i] = timeit.timeit(lambda: insertion_sort(arr), number=1)
-                arr.clear()
+    if cenario == 0:
+        for i in listaExec:
+            for _ in range(i):    
+                arr.append(random.randrange(i))
                 
-        elif cenario == 1:
-            for i in listaExec:
-                arr.append
+            tempo[i] = timeit.timeit(lambda: insertion_sort(arr), number=1)
+            arr.clear()
+            
+            
+    elif cenario == 1:
+        for i in listaExec:
+            for _ in range(i):
+                arr.append(random.randrange(i))
+            
+            arr.sort(reverse=True)
+            tempo[i] = timeit.timeit(lambda: insertion_sort(arr), number=1)
+            arr.clear()
+    
+    else:
+        raise ValueError("Valor passado no cenario invalido!")
         
         
     return tempo
 
 
 
-def relatorioPorCenario(cenarioPassado=0):
+def relatorioPorCenario(cenarioPassado=0, qntArray=[1000, 2000, 4000, 8000, 16000]):
     #script que gera os dados
-    qntArray = [1000, 2000, 4000, 8000, 16000]
 
     soma = {}
 
@@ -76,11 +82,9 @@ def relatorioPorCenario(cenarioPassado=0):
         
 
     tracin(50)
-    print("Mediana de cada tamanho de array")
+    tipo = "mediana lista ordenada no pior caso" if cenarioPassado == 1 else "Mediana lista com entrada aleatoria"
+    print(tipo)
     tracin(50)
     print()
     for i in medianaList:
         print(f"{i} | {medianaList[i]}", sep="    ")
-
-
-
