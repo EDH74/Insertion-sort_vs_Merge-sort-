@@ -36,8 +36,8 @@ OBS: dependendo da maquina pode ser mais lento o programa.
 python main.py
 ```
 ## Configurações da minha máquina
-Placa mãe: Asus tuf gaming b450m
-Memoria ram: 10gb
-Processador: Ryzen 5 5600G
-GPU: AMD RX580 8GB
-OS: ArchLinux
+Placa mãe: Asus tuf gaming b450m <br>
+Memoria ram: 10gb <br>
+Processador: Ryzen 5 5600G   <br>
+GPU: AMD RX580 8GB <br>
+OS: ArchLinux <br>
