@@ -20,6 +20,9 @@ Através das medições (e visível no relatório gerado pelo terminal), pudemos
 3.  **A superioridade do Divisão e Conquista:** O Merge Sort foi ordens de grandeza mais rápido, especialmente nos tamanhos maiores de array (8.000 e 16.000). 
 4.  **Estabilidade do Merge Sort:** Diferente do Insertion Sort, o Merge Sort entregou tempos excelentes e quase idênticos tanto para a entrada aleatória quanto para o cenário de pior caso, comprovando que sua complexidade O(n log n) é estável independente da organização prévia dos dados.
 
+![Gráfico dos testes](./graficos/grafico_comparativo.png)
+
+Gráfico com a comparação dos tempos que eu testei na minha máquina.
 ## ⚙️ Como rodar
 
 O projeto utiliza bibliotecas nativas do Python (`asyncio`, `timeit`, `statistics`, `random`), portanto, não é necessário instalar dependências externas. Recomenda-se o uso do Python 3.9+ devido ao uso de `asyncio.to_thread`.
@@ -29,6 +32,12 @@ O projeto utiliza bibliotecas nativas do Python (`asyncio`, `timeit`, `statistic
 3. Execute o script principal:
 OBS: dependendo da maquina pode ser mais lento o programa.
 
-![Gráfico dos testes](./graficos/grafico_comparativo.png)
 ```bash
 python main.py
+```
+## Configurações da minha máquina
+Placa mãe: Asus tuf gaming b450m
+Memoria ram: 10gb
+Processador: Ryzen 5 5600G
+GPU: AMD RX580 8GB
+OS: ArchLinux
