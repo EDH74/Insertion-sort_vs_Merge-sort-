@@ -2,7 +2,7 @@
 
 ## 🔍 O que investigamos
 
-Neste projeto, investigamos e comparamos o tempo de execução de dois algoritmos de ordenação de naturezas diferentes: o **Insertion Sort** (complexidade de tempo O(n**2)) e o **Merge Sort** (complexidade de tempo $O(n \log n)$).
+Neste projeto, investigamos e comparamos o tempo de execução de dois algoritmos de ordenação de naturezas diferentes: o **Insertion Sort** (complexidade de tempo O(n**2)) e o **Merge Sort** (complexidade de tempo (n log n)).
 
 O objetivo foi observar como o desempenho de cada um escala na prática. Para garantir resultados sólidos, seguimos a seguinte metodologia:
 *   **Tamanhos de entrada:** Medimos arrays de 5 tamanhos diferentes, dobrando a cada passo: 1.000, 2.000, 4.000, 8.000 e 16.000 elementos.
